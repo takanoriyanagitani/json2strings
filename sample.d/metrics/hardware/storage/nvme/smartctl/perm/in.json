@@ -1,0 +1,28 @@
+{
+  "json_format_version": [
+    1,
+    0
+  ],
+  "smartctl": {
+    "version": [
+      7,
+      1
+    ],
+    "svn_revision": "5022",
+    "platform_info": "x86_64-linux-5.10.16.3-microsoft-standard-WSL2",
+    "build_info": "(local build)",
+    "argv": [
+      "smartctl",
+      "--all",
+      "--json",
+      "/dev/sdb"
+    ],
+    "messages": [
+      {
+        "string": "Smartctl open device: /dev/sdb failed: Permission denied",
+        "severity": "error"
+      }
+    ],
+    "exit_status": 2
+  }
+}
