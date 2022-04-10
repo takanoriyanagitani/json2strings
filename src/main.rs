@@ -9,9 +9,12 @@ where
     R: Read,
     W: Write,
 {
-    let mut consumer = new_string_consumer(BufWriter::new(w.by_ref()));
+    let mut bw = BufWriter::new(w.by_ref());
+    let mut consumer = new_string_consumer(bw.by_ref());
     consumer.consume_reader(BufReader::new(r))?;
     drop(consumer);
+    bw.flush().map_err(|e| format!("Unable to flush: {}", e))?;
+    drop(bw);
 
     w.flush().map_err(|e| format!("Unable to flush: {}", e))?;
     Ok(())
